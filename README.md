@@ -136,7 +136,3 @@ python src/collect_reviews.py --max-reviews 2000
 
 ---
 
-## 7. Author & Contact
-- **Applicant:** Candidate for Forward Deployed Engineer (Intern to FTE)
-- **Target Team:** MoveInSync Technology Solutions
-- **Repository Date:** October 2026
