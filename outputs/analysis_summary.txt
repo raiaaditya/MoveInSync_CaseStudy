@@ -1,0 +1,102 @@
+MOVEINSYNC PLAY STORE REVIEWS - ANALYSIS SUMMARY
+============================================================
+
+A. SAMPLE (read this first)
+- Reviews analysed: 2,000. Date range: 2018-09-21 to 2026-10-09.
+- Collection passes: newest = 1,400, most_relevant = 600.
+  * newest: 2026-04-27 to 2026-10-09, average rating 3.81
+  * most_relevant: 2018-09-21 to 2026-04-26, average rating 2.07
+- The two passes differ a lot, so overall percentages and yearly counts describe THIS SAMPLE, not all Play Store reviews.
+
+B. OBSERVED EVIDENCE (counted directly from the data)
+- Overall average rating in the sample: 3.29
+- Rating distribution: 1 star = 695 (34.8%); 2 star = 105 (5.2%); 3 star = 96 (4.8%); 4 star = 138 (6.9%); 5 star = 966 (48.3%)
+- Low-rated (1-2 star) reviews: 800 (40.0% of sample).
+- Complaint themes in low-rated reviews (keyword rules; reviews can have several themes):
+     28.2%  n=226  App not loading / launch / crashes / errors
+     25.5%  n=204  Cab booking / scheduling / allocation
+     21.8%  n=174  Tracking / GPS / ETA accuracy
+     19.5%  n=156  Pickup/drop timing and delays
+     18.2%  n=146  UI / usability / missing features
+     15.6%  n=125  Login / OTP / registration / auto-logout
+     14.2%  n=114  No specific theme identified
+     12.0%  n=96   Notifications / reminders / feedback prompts
+     10.5%  n=84   Routing / pooling / pickup points
+      9.4%  n=75   Support / helpdesk / complaint handling
+      8.6%  n=69   Mentions an update / new version
+      4.5%  n=36   Driver / staff conduct
+      4.1%  n=33   Calls, call quality and app permissions
+      1.9%  n=15   Safety concerns
+  114 low-rated reviews (14.2%) matched no theme; many are short comments such as 'worst app' with no stated reason.
+- Low-rated review length differs by collection pass (median characters): most_relevant = 291, newest = 63. Short reviews match fewer themes, so compare the pass columns in
+  outputs/tables/complaint_themes_low_rated.csv with that in mind.
+- Low vs high rated reviews (all reviews scope):
+    Low (1-2 stars): n=800, median length 208 characters, developer response on 26.6% of reviews
+    High (4-5 stars): n=1,104, median length 14 characters, developer response on 6.0% of reviews
+- Themes mentioned much more in low-rated than high-rated reviews:
+    App not loading / launch / crashes / errors: 28.2% of low vs 3.6% of high
+    Cab booking / scheduling / allocation: 25.5% of low vs 5.8% of high
+    Pickup/drop timing and delays: 19.5% of low vs 2.8% of high
+
+C. POSSIBLE EXPLANATIONS (HYPOTHESES - NOT shown by this data)
+Public reviews describe symptoms in the reviewers' own words. They cannot prove technical or
+operational causes. Treat the items below as questions to investigate with internal data.
+
+* App not loading / launch / crashes / errors  (observed in 28.2% of low-rated reviews)
+    Possible contributors (unverified): Release regressions, device/OS incompatibilities, server outages, install or update problems.
+    What would confirm it: Check crash analytics by app version/device/OS and incident logs.
+
+* Cab booking / scheduling / allocation  (observed in 25.5% of low-rated reviews)
+    Possible contributors (unverified): Vehicle supply gaps, booking cut-off rules set by employers, roster configuration, missing booking features.
+    What would confirm it: Analyse the booking-to-allocation funnel and cancellation reasons.
+
+* Tracking / GPS / ETA accuracy  (observed in 21.8% of low-rated reviews)
+    Possible contributors (unverified): Delayed or missing location pings from driver phones/vehicle devices, ETA calculation assumptions, map/API behaviour, weak mobile data.
+    What would confirm it: Compare app-displayed location/ETA with raw vehicle telemetry and actual arrival times.
+
+* Pickup/drop timing and delays  (observed in 19.5% of low-rated reviews)
+    Possible contributors (unverified): Traffic, route planning, vendor/driver availability, last-minute roster changes, ETA recalculation.
+    What would confirm it: Compare scheduled vs actual pickup times in trip logs.
+
+* UI / usability / missing features  (observed in 18.2% of low-rated reviews)
+    Possible contributors (unverified): Features limited by employer configuration, or hard to discover.
+    What would confirm it: Run usability tests and track feature requests.
+
+* Login / OTP / registration / auto-logout  (observed in 15.6% of low-rated reviews)
+    Possible contributors (unverified): OTP/SMS/email delivery failures, mismatches with the employer's employee records, session-timeout or single-sign-on policies.
+    What would confirm it: Check OTP delivery and authentication logs by device, carrier and employer.
+
+* Notifications / reminders / feedback prompts  (observed in 12.0% of low-rated reviews)
+    Possible contributors (unverified): Mandatory rating steps, overlapping channels (push, SMS, email, calls), missing notification settings.
+    What would confirm it: Review product configuration and notification logs.
+
+* Routing / pooling / pickup points  (observed in 10.5% of low-rated reviews)
+    Possible contributors (unverified): Route-optimisation trade-offs (pooling vs trip duration), pickup points configured by employers.
+    What would confirm it: Review route and trip-duration data.
+
+* Support / helpdesk / complaint handling  (observed in 9.4% of low-rated reviews)
+    Possible contributors (unverified): Staffing levels, unclear hand-offs between the employer's transport team and the vendor, slow escalation.
+    What would confirm it: Review ticket response/resolution times and contact-channel data.
+
+* Mentions an update / new version  (observed in 8.6% of low-rated reviews)
+    Possible contributors (unverified): Regressions or UI changes in recent releases. Note: this is what reviewers SAY; the timing is not verified here.
+    What would confirm it: Compare ratings and crash rates before and after each release.
+
+* Driver / staff conduct  (observed in 4.5% of low-rated reviews)
+    Possible contributors (unverified): Vendor driver training and monitoring, coordination gaps between rider and driver.
+    What would confirm it: Review trip feedback and complaint tickets by vendor.
+
+* Calls, call quality and app permissions  (observed in 4.1% of low-rated reviews)
+    Possible contributors (unverified): Company device-management policies, OS permission rules, masked-calling set-up.
+    What would confirm it: Test permission flows by OS version and employer policy.
+
+* Safety concerns  (observed in 1.9% of low-rated reviews)
+    Possible contributors (unverified): SOS feature reliability, friction in safe-reach confirmations, driver-conduct controls.
+    What would confirm it: Review SOS test logs and safety incident reports.
+
+D. LIMITATIONS
+- Theme rules are keyword-based. Some reviews are mis-tagged or missed. Check
+  outputs/tables/theme_validation_sample.csv by hand before quoting percentages.
+- Reviewers are self-selected and may not represent all users.
+- Redaction removes emails, phone numbers, links and long ID numbers. It cannot reliably remove
+  names. Read the example excerpts before sharing them.
